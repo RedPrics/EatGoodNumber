@@ -328,7 +328,7 @@ const MODE_NORMAL = 1, MODE_ENDLESS = 2, MODE_PRACTICE = 3;
         if (operation=='+') answer=number1+number2;
         if (operation=='-') answer=number1-number2;
         if (operation=='*') answer=number1*number2;
-        if(!right) answer=answer+Math.floor(Math.random()*200)+1;
+        if(!right) answer=answer+Math.floor(Math.random()*20)*10+10;
         let equation=number1+operation+number2+"="+answer;
         return equation;
     }
