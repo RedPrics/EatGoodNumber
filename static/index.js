@@ -321,14 +321,14 @@ const MODE_NORMAL = 1, MODE_ENDLESS = 2, MODE_PRACTICE = 3;
         _clearttClsReg = / t{1,2}\d+| bad/;
 
      function generateArithmeticProblem(right){
-        let number1 = Math.floor(Math.random()*500);
-        let number2 = Math.floor(Math.random()*500);
+        let number1 = Math.floor(Math.random()*20);
+        let number2 = Math.floor(Math.random()*20);
         const operation =['+','-','*'][Math.floor(Math.random()*3)];
         let answer;
         if (operation=='+') answer=number1+number2;
         if (operation=='-') answer=number1-number2;
         if (operation=='*') answer=number1*number2;
-        if(!right) answer=answer+Math.floor(Math.random()*20)*10+10;
+        if(!right) answer=answer+Math.floor(Math.random()*20)+1;
         let equation=number1+operation+number2+"="+answer;
         return equation;
     }
