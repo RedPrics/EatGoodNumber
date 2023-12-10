@@ -320,6 +320,19 @@ const MODE_NORMAL = 1, MODE_ENDLESS = 2, MODE_PRACTICE = 3;
     let _ttreg = / t{1,2}(\d+)/,
         _clearttClsReg = / t{1,2}\d+| bad/;
 
+     function generateArithmeticProblem(right){
+        let number1 = Math.floor(Math.random()*10);
+        let number2 = Math.floor(Math.random()*10);
+        const operation =['+','-','*'][Math.floor(Math.random()*3)];
+        let answer;
+        if (operation=='+') answer=number1+number2;
+        if (operation=='-') answer=number1-number2;
+        if (operation=='*') answer=number1*number2;
+        if(!right) answer=answer+Math.floor(Math.random()*20)+1;
+        let equation=number1+operation+number2+"="+answer;
+        return equation;
+    }
+
     function refreshGameLayer(box, loop, offset) {
         let i = Math.floor(Math.random() * 1000) % 4 + (loop ? 0 : 4);
         for (let j = 0; j < box.children.length; j++) {
@@ -335,10 +348,14 @@ const MODE_NORMAL = 1, MODE_ENDLESS = 2, MODE_PRACTICE = 3;
                     id: r.id
                 });
                 r.className += ' t' + (Math.floor(Math.random() * 1000) % 5 + 1);
+                r.innerHTML=`<p class="test">${generateArithmeticProblem(true)}</p>`
                 r.notEmpty = true;
                 i = (Math.floor(j / 4) + 1) * 4 + Math.floor(Math.random() * 1000) % 4;
             } else {
                 r.notEmpty = false;
+                if(loop||j>=4){
+                    r.innerHTML=`<p class="test">${generateArithmeticProblem(false)}</p>`
+                }
             }
         }
         if (loop) {
